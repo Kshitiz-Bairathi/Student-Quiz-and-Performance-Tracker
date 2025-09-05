@@ -5,7 +5,8 @@ from Python_Part.Admin_class import Admin_class
 from Python_Part.Student_class import Student_class
 
 Main = Blueprint('Main', __name__)
-
+from FlaskMIS import db, bcrypt
+from FlaskMIS.models import Admins
 @Main.route("/init-db")
 def init_db():
     db.create_all()
