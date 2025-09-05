@@ -6,6 +6,19 @@ from Python_Part.Student_class import Student_class
 
 Main = Blueprint('Main', __name__)
 
+@Main.route("/init-db")
+def init_db():
+    db.create_all()
+    return "✅ Tables created in PostgreSQL"
+
+@Main.route("/create-admin")
+def create_admin():
+    pw = bcrypt.generate_password_hash("Bairathi").decode("utf-8")
+    admin = Admins(username="Kshitiz", password=pw)
+    db.session.add(admin)
+    db.session.commit()
+    return "✅ Admin created: username=admin, password=admin123"
+
 @Main.route("/")
 @Main.route("/home")
 def home():
