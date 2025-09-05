@@ -1,7 +1,5 @@
 from flask import Flask, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
-from FlaskMIS import db, bcrypt
-from FlaskMIS.models import Admins
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
