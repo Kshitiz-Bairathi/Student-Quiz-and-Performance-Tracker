@@ -1,0 +1,115 @@
+{% extends 'layout.html'%} {% block content %}
+<body class="p-6 bg-gray-100">
+	<div class="max-w-2xl mx-auto  p-6 rounded-lg shadow-md align">
+		<h1 class="text-2xl font-bold mb-4 text-center text-blue-600">
+			Add New Question
+		</h1>
+		<form
+			action="{{url_for('Admin.Add_que', subject = subject)}}"
+			method="POST"
+			class="space-y-4 form-align"
+		>
+			<label class="block font-medium  text-field">Enter Question :</label>
+			<input
+				type="text"
+				name="question"
+				required
+				class="w-full p-2 bor rounded-lg "
+			/>
+			<br />
+            <br/>
+			<label class="block font-medium text-field-option">Option 1 :</label>
+			<input
+				type="text"
+				name="option1"
+				required
+				class="w-full p-2 bor rounded-lg"
+				id="opt1"
+			/>
+			<br />
+            <br>
+			<label class="block font-medium text-field-option">Option 2 :</label>
+			<input
+				type="text"
+				name="option2"
+				required
+				class="w-full p-2 bor rounded-lg"
+				id="opt2"
+			/>
+			<br />
+            <br/>
+			<label class="block font-medium text-field-option">Option 3 :</label>
+			<input
+				type="text"
+				name="option3"
+				required
+				class="w-full p-2 bor rounded-lg"
+				id="opt3"
+			/>
+			<br />
+            <br/>
+			<label class="block font-medium text-field-option">Option 4 :</label>
+			<input
+				type="text"
+				name="option4"
+				required
+				class="w-full p-2 bor rounded-lg"
+				id="opt4"
+			/>
+			<br />
+            <br/>
+			<label class="block font-medium">Correct Answer :</label>
+			<select
+				name="correct_answer"
+				required
+				class="w-full p-2 bor rounded-lg"
+				id="correct_answer"
+			>
+				<option value="" disabled selected>Select the correct answer</option>
+				<option value="" id="ans1"></option>
+				<option value="" id="ans2"></option>
+				<option value="" id="ans3"></option>
+				<option value="" id="ans4"></option>
+			</select>
+
+			<button
+				type="submit"
+				class="w-full bg-blue-500 add-button p-2 rounded-lg hover:bg-blue-600"
+			>
+				Add Question
+			</button>
+
+			<div class="borter-top pt-3">
+				<small class="text-muted back">
+					<b>Back to Admin Page</b>
+					<a class="ml-2" href="{{ url_for('Admin.admin') }}"><u>Back</u></a>
+				</small>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		document.addEventListener("input", function () {
+			document.getElementById("ans1").value =
+				document.getElementById("opt1").value;
+			document.getElementById("ans1").innerText =
+				document.getElementById("opt1").value;
+
+			document.getElementById("ans2").value =
+				document.getElementById("opt2").value;
+			document.getElementById("ans2").innerText =
+				document.getElementById("opt2").value;
+
+			document.getElementById("ans3").value =
+				document.getElementById("opt3").value;
+			document.getElementById("ans3").innerText =
+				document.getElementById("opt3").value;
+
+			document.getElementById("ans4").value =
+				document.getElementById("opt4").value;
+			document.getElementById("ans4").innerText =
+				document.getElementById("opt4").value;
+		});
+	</script>
+</body>
+{% endblock content %}

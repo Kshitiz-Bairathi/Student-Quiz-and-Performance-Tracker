@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class = "user-body">
+        <div class="user-container">
+            <h1 class="user-header">Admin Panel - {{ current_user.username }}</h1>
+
+            <div class="user-options">
+                <ul>
+                    <li><a href="{{ url_for('Main.select_subject', option = 'view') }}">📜 View All Questions</a></li>
+                    <li><a href="{{ url_for('Main.select_subject', option = 'add') }}">➕ Add a Question</a></li>
+                    <li><a href="{{ url_for('Main.select_subject', option = 'delete') }}">❌ Delete a Question</a></li>
+                    <li><a href="{{ url_for('Admin.select_subject_name') }}">📊 Check Student's Performance</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

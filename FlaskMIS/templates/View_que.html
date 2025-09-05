@@ -1,0 +1,24 @@
+{% extends 'layout.html'%} {% block content %}
+<body class="p-6">
+	<div class="max-w-4xl mx-auto">
+		<h1 class="text-3xl font-bold text-center mb-6 text-blue-600">
+			Questions List
+		</h1>
+
+		<div class="space-y-4">
+			{% for question in questions %}
+			<div class="question-card p-2">
+				<p class="text-lg font-medium">{{ loop.index }}. {{ question }}</p>
+			</div>
+			{% endfor %}
+		</div>
+
+		<div class="footer">
+			<small class="text-muted back">
+				<b>Back to Admin Page</b>
+				<a class="ml-2" href="{{ url_for('Admin.admin') }}"><u>Back</u></a>
+			</small>
+		</div>
+	</div>
+</body>
+{% endblock content %}

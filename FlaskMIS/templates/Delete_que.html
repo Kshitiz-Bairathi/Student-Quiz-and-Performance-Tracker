@@ -1,0 +1,32 @@
+{% extends 'layout.html'%} {% block content %}
+<body>
+	<h2>Delete a Question</h2>
+
+	<form method="POST" onsubmit="return confirmDelete();">
+		<label for="question">Select a Question to Delete:</label>
+		<select name="question" id="question">
+            <option value="" disabled selected>Select Question</option>
+			{% for question in questions %}
+			<option value="{{ question }}">{{ question }}</option>
+			{% endfor %}
+		</select>
+		<br /><br />
+		<input type="submit" value="Delete" />
+		<div class="borter-top pt-3">
+			<small class="text-muted back">
+				<b>Back to Admin Page</b>
+				<a class="ml-2" href="{{ url_for('Admin.admin') }}"><u>Back</u></a>
+			</small>
+		</div>
+	</form>
+
+	<script>
+		function confirmDelete() {
+			const selected = document.getElementById("question").value;
+			return confirm(
+				"Are you sure you want to delete the following question?\n\n" + selected
+			);
+		}
+	</script>
+</body>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="user-container">
+        <h1 class="user-header">Student Dashboard - {{ current_user.name }}</h1>
+
+        <div class="user-options">
+            <ul>
+                <li><a href="{{ url_for('Main.select_subject', option = 'exam') }}">📝 Give Exam</a></li>
+                <li><a href="{{ url_for('Main.select_subject', option = 'performance') }}">📊 Check Your Performance</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

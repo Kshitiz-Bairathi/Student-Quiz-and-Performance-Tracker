@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="subject-container">
+        <h1 class="subject-header  select">Select a Subject</h1>
+
+        <form action="{{ url_for('Admin.select_subject_name') }}" method="POST">
+            <div class="input-group">
+                <input type="text" id="student_name" name="student_name" required placeholder="Enter the Name of Student">
+            </div>
+
+            <div class="subject-grid">
+                <button type="submit" name="subject" value="English">
+                    <div class="subject-icon">📖</div>
+                    <div class="subject-name">English</div>
+                </button>
+                <button type="submit" name="subject" value="Maths">
+                    <div class="subject-icon">🧮</div>
+                    <div class="subject-name">Maths</div>
+                </button>
+                <button type="submit" name="subject" value="Physics">
+                    <div class="subject-icon">🔬</div>
+                    <div class="subject-name">Physics</div>
+                </button>
+                <button type="submit" name="subject" value="Chemistry">
+                    <div class="subject-icon">🧪</div>
+                    <div class="subject-name">Chemistry</div>
+                </button>
+            </div>
+            
+            <div class = "borter-top pt-3">
+                <small class = "text-muted back">
+                    <b>Back to Admin Page</b> <a class = "ml-2" href = "{{ url_for('Admin.admin') }}"><u>Back</u></a>
+                </small>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

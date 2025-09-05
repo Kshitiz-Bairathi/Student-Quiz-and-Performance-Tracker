@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+{% block content %}
+<body>
+    <h2>Quiz Results</h2>
+
+    {% for item in results %}
+        <div class="question-block">
+            <p><strong>Q{{ loop.index }}:</strong> {{ item[0] }}</p>
+
+            {% if item[1] == 1 %}
+                <p>Your Answer: {{ item[2] }}</p>
+                <p class="answer-correct">✔ Correct</p>
+            {% else %}
+                <p>Your Answer: {{ item[2] }}</p>
+                <p class="answer-wrong">✖ Wrong</p>
+                <p><strong>Correct Answer:</strong> {{ item[3] }}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="borter-top pt-3">
+        <small class="text-muted back">
+                <b>Back to Student Page</b>
+                <a class="ml-2" href="{{ url_for('Student.student') }}"><u>Back</u></a>
+        </small>
+    </div>
+
+</body>
+{% endblock content %}

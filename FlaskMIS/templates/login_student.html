@@ -1,0 +1,12 @@
+{% extends "login_layout.html" %}
+{%block LoginHeading%}
+Student Login
+{%endblock LoginHeading%}
+
+{% block login_link %}
+<div class = "borter-top pt-3">
+    <small class = "text-muted">
+        Not Registered Yet? <a class = "ml-2" href = "{{ url_for('Student.register') }}">Register Now</a>
+    </small>
+</div>
+{% endblock login_link %}

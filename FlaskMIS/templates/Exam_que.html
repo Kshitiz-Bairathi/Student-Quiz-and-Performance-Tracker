@@ -1,0 +1,21 @@
+{% extends 'layout.html'%}
+{% block content %}
+    <body>
+    <h2>Question {{ qid + 1 }}</h2>
+
+    <form method="POST" action="{{ url_for('Student.Exam_que', qid=qid + 1) }}">
+        <p>{{ question_text }}</p>
+
+        {% for option in options %}
+            <div>
+                <input type="radio" name="selected_option" value="{{ option }}" required>
+                {{ option|int if option is number and option == option|int else option }}
+            </div>
+        {% endfor %}
+
+        <button type="submit">Next</button>
+    </form>
+
+</body>
+
+{% endblock content %}

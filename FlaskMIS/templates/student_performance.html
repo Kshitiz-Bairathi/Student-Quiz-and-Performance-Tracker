@@ -1,0 +1,67 @@
+{% extends 'layout.html'%}
+{% block content %}
+
+{% if session['user_role'] == 'admin' %}
+    <h2>{{student_name}}'s Performance</h2>
+{% else %}
+    <h2>Your Performance</h2>
+{% endif %}
+
+<div class="chart-container" style="margin-left: 0; width: 100%; max-width: 1200px;">
+    <canvas id="performanceChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Render Python lists as raw JavaScript arrays using Jinja
+    let attempts_data = {{ attempts | tojson | safe }};
+    let percentages_data = {{ percentage | tojson | safe }};
+
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: attempts_data,
+            datasets: [{
+                label: 'Percentage',
+                data: percentages_data,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false,
+                tension: 0.1,
+                pointBackgroundColor: 'rgba(75, 192, 192, 1)',
+                pointRadius: 5
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Attempts'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Percentage'
+                    },
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    });
+</script>
+<div class="borter-top pt-3">
+    <small class="text-muted back">
+        {% if session['user_role'] == 'admin' %}
+            <b>Back to Admin Page</b>
+            <a class="ml-2" href="{{ url_for('Admin.admin') }}"><u>Back</u></a>
+        {% else %}
+            <b>Back to Student Page</b>
+            <a class="ml-2" href="{{ url_for('Student.student') }}"><u>Back</u></a>
+        {% endif %}
+    </small>
+</div>
+{% endblock content %}
