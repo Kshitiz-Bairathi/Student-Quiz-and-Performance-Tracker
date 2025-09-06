@@ -14,7 +14,7 @@ def home():
 @Main.route('/logout')
 def logout():
     logout_user()
-    session.clear()
+    # session.clear()
     return redirect(url_for('Main.home'))
 
 @Main.route('/student_performance')
